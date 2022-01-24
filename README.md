@@ -75,7 +75,7 @@ lv_ui guider_ui;
 
 - Call the following functions on your startup code (after `lv_init()`):
 ```
-	setup_ui(&guider_ui);
+    setup_ui(&guider_ui);
     events_init(&guider_ui);
     custom_init(&guider_ui);
 ```
