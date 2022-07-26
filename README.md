@@ -11,16 +11,16 @@ This project was made from `lvgl-port-linux-frame-buffer`
 - SDL2 library for ARM Linux
 
 ## Cloning repository
-```
+```bash
 $ git clone https://github.com/JON95Git/lvgl-rasp-sdl.git
 ```
 
 ## Building the application
-```
+```bash
 $ make -j
 ```
 To clear the build
-```
+```bash
 $ make -j clean
 ```
 The binary is saved in `build/bin` as `lvgl_app`.
@@ -30,7 +30,7 @@ Send the binary to your Raspberry Pi 3.
 
 Then, type:
 
-```
+```bash
 $ ./lvgl_app
 ```
 ## Create a similar project from scracth
@@ -61,23 +61,24 @@ If you want to add these directories in a GUI-Guider specific directory
 you need to change some `makefiles`.
 
 Change from `$(PRJ_DIR)/` to `$(PRJ_DIR)/gui_guider/` in the following `makefiles`:
-
-    generated.mk
-    images.mk
-    custom.mk
-    guider_fonts.mk
-    guider_customer_fonts.mk
+```bash
+- generated.mk
+- images.mk
+- custom.mk
+- guider_fonts.mk
+- guider_customer_fonts.mk
+```
 
 - Declare a GUI-Guider struct on your code:
-```
+```c
 lv_ui guider_ui;
 ```
 
 - Call the following functions on your startup code (after `lv_init()`):
-```
-    setup_ui(&guider_ui);
-    events_init(&guider_ui);
-    custom_init(&guider_ui);
+```c
+setup_ui(&guider_ui);
+events_init(&guider_ui);
+custom_init(&guider_ui);
 ```
 ### Building SDL library for ARM Linux
 Follow the steps in the link: https://forums.raspberrypi.com/viewtopic.php?t=39667
@@ -128,7 +129,7 @@ Copy `SDL/` directory to your project directory
 You need to link SDL (statically) with your application.
 Add these lines in your build system/Makefile:
 
-```
+```bash
 LDFLAGS := -lSDL2
 DFLAGS += -LSDL2/lib
 CFLAGS += "-ISDL2/include"
